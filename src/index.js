@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import AppContainer from "./AppContainer";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App expandedFolders={["Common7/IDE", "DIA SDK", "VC/atlmfc/include"]} />
+    <AppContainer expandedFolders={["VC/UnitTest", "SDK/Bootstrapper/Packages/vcredist_arm/en"]} />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -2,36 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import FolderList from "../../FolderList";
 
-const ListItem = ({ item, handleClick, parent }) => {
-  const handleItemClick = (e) => {
-    if (item.type === "FILE") {
-      return
-    }
-    handleClick(e);
-  };
-  let newParent = [];
-  if (parent) {
-    newParent = [...parent, item.name];
-  } else {
-    newParent = [item.name];
-  }
-
+const ListItem = ({ branch, handleClick, parent, newParent, className, onClick }) => {
   return (
     <>
-      <li id={item.name} data-parent={parent && JSON.stringify(parent)} onClick={handleItemClick}>
-        {item.name}
+      <li id={branch.name} data-parent={parent && JSON.stringify(parent)} onClick={onClick} className={className}>
+        {branch.name}
       </li>
-      {item.show && <FolderList tree={item.children} handleClick={handleClick} parent={newParent} />}
+      {branch.show && <FolderList tree={branch.children} handleClick={handleClick} parent={newParent} />}
     </>
   );
 };
 
 ListItem.propTypes = {
-  // bla: PropTypes.string,
-};
-
-ListItem.defaultProps = {
-  // bla: 'test',
+  branch: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  parent: PropTypes.array,
+  newParent: PropTypes.array,
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ListItem;

@@ -1,1 +1,44 @@
 /* your css code */
+
+.close {
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+  font-size: 18px;
+}
+
+.close:hover {
+  font-weight: 700;
+}
+
+.close::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -25px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-image: url("../../../images/folderClose.png");
+  background-repeat: no-repeat;
+}
+
+.open {
+  composes: close;
+}
+
+.open::before {
+  background-image: url("../../../images/folderOpen.png");
+}
+
+.file {
+  composes: close;
+  cursor: default;
+}
+.file::before {
+  background-image: url("../../../images/file.png");
+}
+
+.file:hover {
+  font-weight: 400;
+}
