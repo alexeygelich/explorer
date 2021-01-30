@@ -100,7 +100,13 @@ export default class AppContainer extends Component {
   };
 
   handleSubmit = (e) => {
+    const { search } = this.state;
     e.preventDefault();
+
+    if (!search) {
+      return;
+    }
+
     this.searchFiles();
   };
 
