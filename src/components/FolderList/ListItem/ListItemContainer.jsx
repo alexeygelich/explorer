@@ -4,6 +4,7 @@ import ListItem from "./ListItem";
 import styles from "./ListItem.module.css";
 
 function ListItemContainer({ branch, handleClick, parent }) {
+
   const handleItemClick = (e) => {
     if (branch.type === "FILE") {
       return;
@@ -12,6 +13,7 @@ function ListItemContainer({ branch, handleClick, parent }) {
   };
 
   let newParent = [];
+
   if (parent) {
     newParent = [...parent, branch.name];
   } else {
@@ -19,6 +21,7 @@ function ListItemContainer({ branch, handleClick, parent }) {
   }
 
   let classItem = "";
+  
   if (branch.type === "FILE") {
     classItem = styles.file;
   } else {
