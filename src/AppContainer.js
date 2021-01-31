@@ -27,7 +27,7 @@ export default class AppContainer extends Component {
     this.openDefaultPath();
   };
 
-  openFolder = (name, parent) => {
+  openFolder = (name) => {
     const { tree } = this.state;
     const newTree = JSON.parse(JSON.stringify(tree));
 
@@ -54,8 +54,7 @@ export default class AppContainer extends Component {
     const newTree = JSON.parse(JSON.stringify(tree));
 
     const parseTree = (folders) => {
-      let parentName = parent[0];
-      parent.splice(0, 1);
+      let parentName = parent.splice(0, 1)[0];
 
       if (parent.length === 0) {
         folders.forEach((folder) => {
@@ -85,7 +84,7 @@ export default class AppContainer extends Component {
 
   handleClick = ({ target }) => {
     const folderName = target.id;
-    const folderParent = !!target.dataset.parent ? JSON.parse(target.dataset.parent) : "";
+    const folderParent = !!target.dataset.parent ? JSON.parse(target.dataset.parent) : null;
 
     if (folderParent) {
       this.openFolderWithParent(folderName, folderParent);
